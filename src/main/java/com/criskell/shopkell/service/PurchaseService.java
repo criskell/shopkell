@@ -37,4 +37,11 @@ public class PurchaseService {
     public void delete(Long id) {
         purchaseRepository.deleteById(id);
     }
+
+    public void markAsDone(Long id) {
+        var purchase = purchaseRepository.findById(id).orElseThrow(() -> new RuntimeException("Purchase not found"));
+        purchase.setIsDone(true);
+
+        purchaseRepository.save(purchase);
+    }
 }
