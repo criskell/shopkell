@@ -15,15 +15,60 @@
       href="https://cdn.jsdelivr.net/gh/matifandy8/NeoBrutalismCSS/dist/index.min.css"
     />
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         font-family: 'Public Sans', sans-serif;
         color: #333;
+        margin: 0;
+      }
+
+      .wrapper {
+        padding: 0 2rem;
       }
     </style>
   </head>
   <body>
-    <div class="nb-table-container">
-      <div class="nb-table-header">LISTA DE PRODUTOS A COMPRAR</div>
+    <nav
+      class="nb-navbar nb-m-4"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <a href="/purchases" class="nb-navbar-brand" aria-label="Go to homepage"
+        >SHOPKELL</a
+      >
+      <ul class="nb-navbar-nav" role="menubar">
+        <li class="nb-navbar-item" role="none">
+          <a
+            href="/purchases"
+            class="nb-navbar-link active"
+            role="menuitem"
+            aria-current="page"
+            >Página inicial</a
+          >
+        </li>
+        <li class="nb-navbar-item" role="none">
+          <a href="/purchases/add" class="nb-navbar-link" role="menuitem"
+            >Nova compra</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="wrapper" th:if="${message != null}">
+      <div role="alert" class="nb-marquee green">
+        <div class="nb-marquee-content">
+          <span th:text="${message}"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nb-table-container nb-m-4">
+      <div class="nb-table-header">LISTA DE PRODUTOS À COMPRAR</div>
       <table class="nb-table">
         <thead>
           <tr>
@@ -40,7 +85,7 @@
             <td th:text="${purchase.productName}"></td>
             <td th:text="${purchase.quantity}"></td>
             <td th:text="${purchase.isDone} ? 'Sim' : 'Não'"></td>
-            <td>
+            <td class="nb-flex-row">
               <form
                 th:action="@{'/purchases/' + ${purchase.id} + '/mark-as-done'}"
                 method="post"
@@ -55,7 +100,7 @@
                 th:action="@{'/purchases/' + ${purchase.id} + '/delete'}"
                 method="post"
               >
-                <button type="submit" class="nb-button green">Excluir</button>
+                <button type="submit" class="nb-button orange">Excluir</button>
               </form>
             </td>
           </tr>

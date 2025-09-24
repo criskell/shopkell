@@ -3,8 +3,11 @@ package com.criskell.shopkell.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.criskell.shopkell.entity.Purchase;
 import com.criskell.shopkell.service.PurchaseService;
 
 @Controller
@@ -20,5 +23,17 @@ public class PurchaseController {
     public String list(Model model) {
         model.addAttribute("purchases", purchaseService.findAll());
         return "purchases/list";
+    }
+
+    @GetMapping("/add")
+    public String showAddForm(Model model) {
+        return "purchases/add";
+    }
+
+    @PostMapping
+    public String add(Purchase purchase, RedirectAttributes redirect) {
+        purchaseService.add(purchase);
+        redirect.addFlashAttribute("message", "Compra adicionada com sucesso!");
+        return "redirect:/purchases";
     }
 }

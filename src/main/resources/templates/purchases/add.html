@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopkell</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@700&family=Public+Sans&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/matifandy8/NeoBrutalismCSS/dist/index.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Public Sans', sans-serif;
+        color: #333;
+      }
+
+      .nb-card:hover {
+        transform: initial;
+        box-shadow: 8px 8px 0px #000;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="nb-navbar nb-m-4"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <a href="/" class="nb-navbar-brand" aria-label="Go to homepage"
+        >SHOPKELL</a
+      >
+      <ul class="nb-navbar-nav" role="menubar">
+        <li class="nb-navbar-item" role="none">
+          <a
+            href="/purchases"
+            class="nb-navbar-link"
+            role="menuitem"
+            aria-current="page"
+            >Página inicial</a
+          >
+        </li>
+        <li class="nb-navbar-item" role="none">
+          <a href="/purchases/add" class="nb-navbar-link active" role="menuitem"
+            >Nova compra</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <form
+      class="nb-m-4 nb-card nb-w-full nb-max-w-xl"
+      action="/purchases"
+      method="POST"
+    >
+      <div class="nb-card-content">
+        <div class="nb-form-group">
+          <label for="productName">Nome do produto</label>
+          <input
+            type="text"
+            name="productName"
+            id="productName"
+            class="nb-input default"
+            required
+          />
+        </div>
+
+        <div class="nb-form-group">
+          <label for="quantity">Quantidade</label>
+          <input
+            type="number"
+            name="quantity"
+            id="quantity"
+            class="nb-input default"
+            required
+          />
+        </div>
+
+        <button type="submit" class="nb-button default">Adicionar</button>
+      </div>
+    </form>
+  </body>
+</html>
