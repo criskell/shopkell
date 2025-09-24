@@ -44,4 +44,8 @@ public class PurchaseService {
 
         purchaseRepository.save(purchase);
     }
+
+    public long getTotalPurchases() {
+        return purchaseRepository.count();
+    }
 }

@@ -106,7 +106,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="nb-table-footer">Total: 2 produtos na lista de compras</div>
+      <div
+        class="nb-table-footer"
+        th:text="'Total: ' + ${total} + ' produtos na lista de compras'"
+      ></div>
     </div>
   </body>
 </html>

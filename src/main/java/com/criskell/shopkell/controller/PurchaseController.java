@@ -23,6 +23,7 @@ public class PurchaseController {
     @GetMapping
     public String list(Model model) {
         model.addAttribute("purchases", purchaseService.findAll());
+        model.addAttribute("total", purchaseService.getTotalPurchases());
         return "purchases/list";
     }
 
