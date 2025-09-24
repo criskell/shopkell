@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopkell</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@700&family=Public+Sans&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/matifandy8/NeoBrutalismCSS/dist/index.min.css"
+    />
+    <style>
+      body {
+        font-family: 'Public Sans', sans-serif;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nb-table-container">
+      <div class="nb-table-header">LISTA DE PRODUTOS A COMPRAR</div>
+      <table class="nb-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome do produto</th>
+            <th>Quantidade</th>
+            <th>Comprado?</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="purchase : ${purchases}">
+            <td th:text="${purchase.id}"></td>
+            <td th:text="${purchase.productName}"></td>
+            <td th:text="${purchase.quantity}"></td>
+            <td th:text="${purchase.isDone} ? 'Sim' : 'Não'"></td>
+            <td>
+              <form
+                th:action="@{'/purchases/' + ${purchase.id} + '/mark-as-done'}"
+                method="post"
+                th:if="${!purchase.isDone}"
+              >
+                <button type="submit" class="nb-button green">
+                  Marcar como comprado
+                </button>
+              </form>
+
+              <form
+                th:action="@{'/purchases/' + ${purchase.id} + '/delete'}"
+                method="post"
+              >
+                <button type="submit" class="nb-button green">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="nb-table-footer">Total: 2 produtos na lista de compras</div>
+    </div>
+  </body>
+</html>
