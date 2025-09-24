@@ -39,6 +39,20 @@ public class PurchaseController {
         return "redirect:/purchases";
     }
 
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        var purchase = purchaseService.findById(id);
+        model.addAttribute("purchase", purchase);
+        return "purchases/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String update(@PathVariable("id") Long id, Purchase purchase, RedirectAttributes redirect) {
+        purchaseService.update(id, purchase);
+        redirect.addFlashAttribute("message", "Compra editada com sucesso!");
+        return "redirect:/purchases";
+    }
+
     @PostMapping("/{id}/mark-as-done")
     public String markAsDone(@PathVariable Long id) {
         purchaseService.markAsDone(id);

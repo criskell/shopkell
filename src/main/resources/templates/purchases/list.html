@@ -96,6 +96,14 @@
                 </button>
               </form>
 
+              <a
+                href="@{'/purchases/' + ${purchase.id} + '/edit'}"
+                type="submit"
+                class="nb-button blue"
+              >
+                Editar
+              </a>
+
               <form
                 th:action="@{'/purchases/' + ${purchase.id} + '/delete'}"
                 method="post"

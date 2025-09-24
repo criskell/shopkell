@@ -1,6 +1,7 @@
 package com.criskell.shopkell.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,10 @@ public class PurchaseService {
 
     public List<Purchase> findAll() {
         return purchaseRepository.findAll();
+    }
+
+    public Optional<Purchase> findById(Long id) {
+        return purchaseRepository.findById(id);
     }
 
     public Purchase add(Purchase purchase) {
