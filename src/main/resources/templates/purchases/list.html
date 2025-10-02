@@ -68,7 +68,7 @@
     </div>
 
     <div class="nb-table-container nb-m-4">
-      <div class="nb-table-header">LISTA DE PRODUTOS À COMPRAR</div>
+      <div class="nb-table-header">LISTA DE COMPRAS</div>
       <table class="nb-table">
         <thead>
           <tr>
@@ -97,7 +97,7 @@
               </form>
 
               <a
-                href="@{'/purchases/' + ${purchase.id} + '/edit'}"
+                th:href="@{'/purchases/' + ${purchase.id} + '/edit'}"
                 type="submit"
                 class="nb-button blue"
               >
