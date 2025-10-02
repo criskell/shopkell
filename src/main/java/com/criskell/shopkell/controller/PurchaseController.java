@@ -41,7 +41,7 @@ public class PurchaseController {
 
     @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
-        var purchase = purchaseService.findById(id);
+        var purchase = purchaseService.findById(id).orElseThrow(() -> new RuntimeException("Compra não encontrada"));
         model.addAttribute("purchase", purchase);
         return "purchases/edit";
     }
